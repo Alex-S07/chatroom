@@ -11,6 +11,11 @@
 # production
 /build
 
+# local environment overrides
+.env
+.env.*
+!.env.example
+
 # misc
 .DS_Store
 .env.local
