@@ -3,30 +3,13 @@ import { getAuth, GoogleAuthProvider } from "firebase/auth";
 import { getFirestore } from "firebase/firestore";
 
 const firebaseConfig = {
-  apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
-  authDomain: process.env.REACT_APP_FIREBASE_AUTH_DOMAIN,
-  projectId: process.env.REACT_APP_FIREBASE_PROJECT_ID,
-  storageBucket: process.env.REACT_APP_FIREBASE_STORAGE_BUCKET,
-  messagingSenderId: process.env.REACT_APP_FIREBASE_MESSAGING_SENDER_ID,
-  appId: process.env.REACT_APP_FIREBASE_APP_ID,
+  apiKey: "AIzaSyCun162S1eXrrJcAIDjfaDl3ZScGz7_U3U",
+  authDomain: "chatroom-96aaf.firebaseapp.com",
+  projectId: "chatroom-96aaf",
+  storageBucket: "chatroom-96aaf.firebasestorage.app",
+  messagingSenderId: "829371141985",
+  appId: "1:829371141985:web:da50d33a0813249854ff20",
 };
-
-const requiredKeys = [
-  "REACT_APP_FIREBASE_API_KEY",
-  "REACT_APP_FIREBASE_AUTH_DOMAIN",
-  "REACT_APP_FIREBASE_PROJECT_ID",
-  "REACT_APP_FIREBASE_STORAGE_BUCKET",
-  "REACT_APP_FIREBASE_MESSAGING_SENDER_ID",
-  "REACT_APP_FIREBASE_APP_ID",
-];
-
-const missingKeys = requiredKeys.filter((key) => !process.env[key]);
-
-if (missingKeys.length > 0) {
-  throw new Error(
-    `Missing Firebase env vars: ${missingKeys.join(", ")}. Create a .env.local file with your own Firebase config.`
-  );
-}
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
