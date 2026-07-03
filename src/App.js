@@ -22,13 +22,6 @@ export default function App() {
   // FIX 3: Safely check auth state so the app doesn't crash on refresh
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
-      if (user) {
-        cookies.set("auth-token", user.refreshToken);
-      } else {
-        cookies.remove("auth-token");
-      }
-
-      setIsAuth(!!user);
       setIsUserLoaded(true);
     });
     return () => unsubscribe();
