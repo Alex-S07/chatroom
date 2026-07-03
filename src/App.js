@@ -9,7 +9,7 @@ import "./App.css";
 const cookies = new Cookies();
 
 export default function App() {
-  const [isAuth, setIsAuth] = useState(cookies.get("auth-token"));
+  const [isAuth, setIsAuth] = useState(false);
   
   // FIX 1: Read from localStorage first so refreshing doesn't lose your room!
   const [room, setRoom] = useState(localStorage.getItem("activeRoom") || "general"); 
@@ -22,6 +22,13 @@ export default function App() {
   // FIX 3: Safely check auth state so the app doesn't crash on refresh
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
+      if (user) {
+        cookies.set("auth-token", user.refreshToken);
+      } else {
+        cookies.remove("auth-token");
+      }
+
+      setIsAuth(!!user);
       setIsUserLoaded(true);
     });
     return () => unsubscribe();
